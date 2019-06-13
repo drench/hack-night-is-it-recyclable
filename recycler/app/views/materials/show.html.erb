@@ -1,0 +1,37 @@
+<a href="<%= materials_path %>">Home</a>
+
+<h1><%= @material.name %></h1>
+
+<h2>Recyclable in Chicago?</h2>
+<% if @material.recyclable? %>
+  YES
+<% else %>
+  no
+<% end %>
+
+<% if @material.programs.any? %>
+  <h2>Programs</h2>
+  <%= @material.programs.map(&:name).map(&:titleize).join(', ') %>
+<% end %>
+
+<h2>Alternative Outlet(s)</h2>
+<%= @material.alternative_outlet %>
+
+<% if @material.address? %>
+  <h2>Address</h2>
+  <%= @material.address %>
+<% end %>
+
+<% if @material.phone? %>
+  <h2>Phone</h2>
+  <%= @material.phone %>
+<% end %>
+
+<% if @material.url? %>
+  WWW: <%= @material.url %>
+<% end %>
+
+<% if @material.details? %>
+  <h2>Details</h2>
+  <%= @material.details %>
+<% end %>

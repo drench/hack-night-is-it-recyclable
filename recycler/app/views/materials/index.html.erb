@@ -1,0 +1,40 @@
+<ul>
+<% @materials.each do |material| %>
+  <li>
+    <a href="<%= material_path(material) %>"><%= material.name %></a>
+    <ul>
+      <li>
+        <% if material.recyclable? %>
+          recyclable in Chicago
+        <% else %>
+          not recyclable in Chicago
+        <% end %>
+      </li>
+
+      <% material.programs.each do |program| %>
+        <li><%= program.name.titleize %></li>
+      <% end %>
+
+      <% if material.alternative_outlet? %>
+        <li>Alternative outlet(s): <%= material.alternative_outlet %></li>
+      <% end %>
+
+      <% if material.address? %>
+        <li>Address: <%= material.address %></li>
+      <% end %>
+
+      <% if material.phone? %>
+        <li>Phone: <%= material.phone %></li>
+      <% end %>
+
+      <% if material.url? %>
+        <li>WWW: <%= material.url %></li>
+      <% end %>
+
+      <% if material.details? %>
+        <li><%= material.details %></li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>
