@@ -31,6 +31,6 @@ JSON.parse(File.read('../data/chicago-recycling-guide.json'))["data"].each do |i
   material.phone = item['Phone'] if item['Phone'] != 'NA'
   material.url = item['Website'] if item['Website'] != 'NA'
 
-  material.details = item['Details and/or Restrictions']
+  material.details = item['Details and/or Restrictions'] if item['Details and/or Restrictions'] != 'NA'
   material.save!
 end
